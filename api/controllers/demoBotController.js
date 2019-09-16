@@ -22,9 +22,8 @@ exports.list_all_dangers = async function(req, res) {
     };
 
     // default state is "safe"
-    var situation = {actions: [
-        { "say": "You are safe!" },
-        { "say": "No need to worry. All good!"}
+    var situation = {"actions": [
+        { "say": "You are safe!" }
     ]};
 
     request.get({url: fdnswsBaseUrl + fdnswsQueryEndpoint, qs: fdnswsQueryParameters}, function(err, response, body) {
@@ -36,9 +35,8 @@ exports.list_all_dangers = async function(req, res) {
             for (var int in parsedData.features){
                 console.log(parsedData.features[int].properties.title)
             }
-            situation = {actions: [
-                { "say": "Can't say for sure!" },
-                { "say": "Better be careful!"}
+            situation = {"actions": [
+                { "say": "Can't say for sure!" }
             ]};
         }
         res.send(situation)
